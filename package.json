@@ -1,0 +1,14 @@
+{
+  "name": "writing-json-from-endpoint",
+  "version": "1.0.0",
+  "description": "Writing json files in choosen directory given a JavaScript object array.",
+  "main": "index.js",
+  "author": "@alvarooncode",
+  "type": "module",
+  "scripts": {
+    "go": "node src/index.js"
+  },
+  "devDependencies": {
+    "eslint": "^7.11.0"
+  }
+}
