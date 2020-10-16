@@ -27,8 +27,8 @@ const endpoints = [
 
 Set options in `config.output` object in `index.js`:
 
-- `clearOnInit | boolean`: Use this to remove all existing files in output directory.
-- `dir | string`: Use this to set output folder. 
+- `clearOnInit | boolean` Use this to remove all existing files in output directory.
+- `dir | string` Use this to set output folder. 
 
 ## 📈 Roadmap
 
