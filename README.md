@@ -4,6 +4,8 @@
 
 Writing `json` files in choosen directory given a JavaScript object array.
 
+## ⚙️ How To
+
 * Input
 
 Set array in `src/utils/endpoints.js` like this:
@@ -28,7 +30,7 @@ Set options in `config.output` object in `index.js`:
     - `clearOnInit | boolean`: Use this to remove all existing files in output directory.
     - `dir | string`: Use this to set output folder. 
 
-## Roadmap
+## 📈 Roadmap
 
     - Not creating `json` file if endpoint does not exist.
 
