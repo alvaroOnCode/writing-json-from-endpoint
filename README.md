@@ -43,7 +43,7 @@ Set options in `config.output` object in `index.js`:
 
 [NodeJS](https://nodejs.org/).
 
-## This README.md file looks pretty because of
+## This README.md file looks pretty thanks to
 
 [GitHub Markdown](https://guides.github.com/features/mastering-markdown/) \
 [Emojipedia](https://emojipedia.org/)
