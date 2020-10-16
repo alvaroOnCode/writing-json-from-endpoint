@@ -6,7 +6,7 @@ Writing JSON files in choosen directory given a JavaScript objects array.
 
 ## ⚙️ How To
 
-* ***Input***
+* **Input**
 
 Set array in `src/utils/endpoints.js` like this:
 
@@ -23,7 +23,7 @@ const endpoints = [
 ];
 ```
 
-* ***Output***
+* **Output**
 
 Set options in `config.output` object in `index.js`:
 
