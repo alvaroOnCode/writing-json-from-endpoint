@@ -1,7 +1,7 @@
 {
   "name": "writing-json-from-endpoint",
   "version": "1.0.0",
-  "description": "Writing json files in choosen directory given a JavaScript object array.",
+  "description": "Writing JSON files in choosen directory given a JavaScript objects array.",
   "main": "index.js",
   "author": "@alvarooncode",
   "type": "module",

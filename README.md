@@ -2,7 +2,7 @@
 
 ## 🔖 Description
 
-Writing `json` files in choosen directory given a JavaScript objects array.
+Writing JSON files in choosen directory given a JavaScript objects array.
 
 ## ⚙️ How To
 
