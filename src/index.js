@@ -6,27 +6,54 @@ import request from './utils/request.js';
 /**
  * Config
  */
-const output = './output';
+const config = {
+  output: {
+    clearOnInit: false,
+    dir: './output',
+  },
+};
 
 /**
  * Init
  */
 (async () => {
-  // Remove all files in output directory
-  const clean = await resetOutputDirectory(output);
+  if (config.output.clearOnInit) {
+    try {
+      // Remove all files in output directory
+      const { success, message } = await resetOutputDirectory(config.output.dir);
 
-  if (!clean.success) return;
+      if (!success) {
+        console.error(message);
+        return;
+      }
+
+      console.log(message);
+    } catch (error) {
+      console.error(`💥 Cleaning output directory failed! | ${error.message}`);
+    }
+  }
 
   endpoints.forEach(async (endpoint, i) => {
     try {
       // Request data from API
-      const raw = await request(endpoint);
-      // console.log(`Endpoint #${i + 1} of ${endpoints.length} loaded!`);
+      const req = await request(endpoint);
+
+      if (!req.success) {
+        console.error(req.message);
+        return;
+      }
 
       // Write JSON file
-      writeJSON(output, endpoint, raw);
+      const { success, message } = await writeJSON(config.output.dir, endpoint, req.data);
+
+      if (!success) {
+        console.error(message);
+        return;
+      }
+
+      console.log(message);
     } catch (error) {
-      console.error(`#${i} error! | ${error.message}`);
+      console.error(`💥 Endpoint #${i} failed! | ${error.message}`);
     }
   });
 })();

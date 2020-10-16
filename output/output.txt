@@ -1,1 +1,2 @@
-This path can be changed by paramater in index.js
+ℹ️ This path can be changed by paramater in index.js
+🚮 This file will be removed if you set clearOnInit to true

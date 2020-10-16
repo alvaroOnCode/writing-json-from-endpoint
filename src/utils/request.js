@@ -2,18 +2,18 @@
 import https from 'https';
 
 const request = ({ hostname, path }) => {
-  if (!path) return;
+  if (!path) return 0;
 
   const options = {
     hostname,
     port: 443,
     path,
-    method: 'GET'
+    method: 'GET',
   };
 
   return new Promise((resolve, reject) => {
     // Data
-    let chunks = [];
+    const chunks = [];
 
     // Creating request
     const req = https.request(options, (res) => {
@@ -26,13 +26,18 @@ const request = ({ hostname, path }) => {
 
       res.on('end', () => {
         const data = Buffer.concat(chunks);
-        resolve(data);
+
+        resolve({
+          success: true,
+          message: '✅ Complete JSON received!',
+          data,
+        });
       });
     });
 
     // On event error
     req.on('error', (error) => {
-      console.error('Request | error |', error.message);
+      console.error('💥 Request | error |', error.message);
       reject(error.message);
     });
 

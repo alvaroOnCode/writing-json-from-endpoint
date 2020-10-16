@@ -3,7 +3,12 @@ import path from 'path';
 import fs from 'fs';
 
 const getFileName = (endpoint) => {
-  if (!endpoint) return 'error_in_file_name';
+  if (!endpoint) {
+    return {
+      success: false,
+      message: '💥 Endpoint parameter required.',
+    };
+  }
 
   const fileName = endpoint
     .split('?')
@@ -20,7 +25,12 @@ const getFileName = (endpoint) => {
 };
 
 export const resetOutputDirectory = (dir) => {
-  if (!dir) return;
+  if (!dir) {
+    return {
+      success: false,
+      message: '💥 Output directory parameter required.',
+    };
+  }
 
   return new Promise((resolve, reject) => {
     let unlinked = 0;
@@ -33,12 +43,12 @@ export const resetOutputDirectory = (dir) => {
       if (files.length === 0) {
         resolve({
           success: true,
-          message: 'Directory is already empty!'
-        })
+          message: '✅ Directory is already empty!',
+        });
       }
 
       files.forEach((file, i) => {
-        fs.unlink(path.join(dir, file), err => {
+        fs.unlink(path.join(dir, file), (err) => {
           if (err) {
             reject(err);
           }
@@ -50,20 +60,25 @@ export const resetOutputDirectory = (dir) => {
       if (unlinked === files.length) {
         return resolve({
           success: true,
-          message: 'Directory is clean!'
+          message: '✅ Output directory is clean!',
         });
       }
 
-      return reject({
+      return resolve({
         success: false,
-        message: 'Directory could not be cleaned!'
+        message: '💥 Directory could not be cleaned!',
       });
     });
   });
 };
 
 export const writeJSON = (dir, endpoint, data) => {
-  if (!dir || !endpoint || !data) return;
+  if (!dir || !endpoint || !data) {
+    return {
+      success: false,
+      message: '💥 Output directory, endpoint and raw data parameters required.',
+    };
+  }
 
   const fileName = getFileName(`${endpoint.hostname}.${endpoint.path}`);
   const filePath = path.join(dir, fileName);
@@ -74,7 +89,10 @@ export const writeJSON = (dir, endpoint, data) => {
         reject(error);
       }
 
-      resolve(`Data written to ${fileName}!`);
+      resolve({
+        success: true,
+        message: `✅ Data written to ${fileName}!`,
+      });
     });
   });
 };

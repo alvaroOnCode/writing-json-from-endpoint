@@ -1,16 +1,22 @@
 /**
- * Config
  * Set new entries to create JSON files
  */
-export default [
+const endpoints = [
+  // Comments
+  {
+    hostname: 'jsonplaceholder.typicode.com',
+    path: '/comments',
+  },
   // Users
   {
     hostname: 'jsonplaceholder.typicode.com',
-    path: '/users'
+    path: '/users',
   },
   // Posts
   {
     hostname: 'jsonplaceholder.typicode.com',
-    path: '/posts'
-  }
+    path: '/posts',
+  },
 ];
+
+export default endpoints;
